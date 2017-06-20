@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring: 
+  application:
+    name: report 
+  cloud:  
+    config:       
+      uri: http://config:8888
+      failFast: true
+      user: user
+      password: password
+ 
