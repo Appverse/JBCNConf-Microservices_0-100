@@ -7,6 +7,7 @@ Create a Volume to share the Maven repository with the Jenkins container.
    - <your_.m2_path>/repository:/root/.m2/repository
 
 ## Share Docker engine 
+
 Run docker command on the host machine from Jenkins container
  
 Volumes:
@@ -142,8 +143,7 @@ pipeline {
     stages {
         stage('Checkout') { 
             steps {
-                git branch: 'master', credentialsId: 'MOCR', url: 'https://mocr@appverse.gftlabs.com/git/scm/as2m/jbcnconf-workshop.git'    ---> Create the Credentials for access the repo --> Not necesary when using gitHub???
-              
+                git branch: 'master', url: 'https://github.com/Appverse/JBCNConf-Microservices_0-100.git'               
             }
         }
         stage('Build and Test Java code') {
