@@ -9,7 +9,7 @@ A reporting example could be to summarize the movements by movement type.
 
 It will get some information about the Customer service, so we'll need to add Feign to perform some REST calls. This is just to demonstrate that we can combine different communication mechanisms within the architecture. 
 
-   ![Spring Initializr](images/report-service.png)
+   ![Report Service](images/report-service.png)
 
 Microservice stack:  
   
