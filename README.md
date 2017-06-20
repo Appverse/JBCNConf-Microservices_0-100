@@ -360,10 +360,9 @@ It's recommended to *Enable notifications* when your browser ask for enable them
   The Hystrix stream must be enabled at the Spring Boot application with:  
    
   ```java
-   @EnableHystrix
-  ```
-  
-  Then the methods couldb be annotated with ``java @HystrixCommand ``` to enable Hystrix.
+  @EnableHystrix
+  ```  
+  Then the methods could be annotated with ```@HystrixCommand``` annotation to enable Hystrix.
   
 #### Turbine
 
@@ -524,12 +523,12 @@ Spring Data MongoDB configuration:
 
 Routes configuration. The service must be routed to be accessible through the gateway, we need to add the route at the Zuul configuration. 
 
-´´´yml
+```yml
   movements:
       path: /movement/**    
       serviceId: movements
       stripPrefix: false
-´´´
+```
 
 The Movement service exposes a *POST HTTP* method to create new movements. 
 
@@ -912,7 +911,8 @@ docker system prune
 
 ### Clear the volumes that are orphaned:
 
+```
 docker volume rm $(docker volume ls -qf dangling=true) 
-
+```
 
  
