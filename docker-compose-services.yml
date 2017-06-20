@@ -22,7 +22,19 @@ services:
     image: jbcnconf/movements-service
     restart: on-failure:10 
     depends_on:
-      - movementsdb                
+      - movementsdb    
+      
+  reportdb:
+    image: mongo
+    restart: on-failure:10
+    container_name: reportdb     
+  
+  report:  
+    image: jbcnconf/report-service
+    restart: on-failure:10 
+    depends_on:
+      - reportdb
+                  
 networks:
   default:
     external:

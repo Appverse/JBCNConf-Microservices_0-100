@@ -63,5 +63,6 @@
 		<module>admin-dashboard</module>
 		<module>customers-service</module>
 		<module>movements-service</module>
+		<module>report-service</module>
 	</modules>
 </project>
