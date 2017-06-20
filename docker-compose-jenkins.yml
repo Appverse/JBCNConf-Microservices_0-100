@@ -1,0 +1,29 @@
+version: '2.1'
+services: 
+  jenkins:
+    image: jenkins:2.46.2
+    volumes:     
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose  
+      - /lib64/libdevmapper.so.1.02:/usr/lib/libdevmapper.so.1.02:ro
+      - /lib64/libsystemd-journal.so.0:/usr/lib/libsystemd-journal.so.0
+      - /lib64/libsystemd-id128.so.0:/usr/lib/libsystemd-id128.so.0
+      - /lib64/libgcrypt.so.11:/usr/lib/libgcrypt.so.11
+      - /lib64/libdw.so.1:/usr/lib/libdw.so.1 
+      - /c/Users/mocr/.m2/repository:/root/.m2/repository
+    environment:
+      - "JAVA_OPTS=-Duser.timezone=Europe/Madrid"
+      - "JENKINS_OPTS= --prefix=/jenkins"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+      - "22000:22000"
+    user: root
+    privileged: true  
+    restart: always
+    container_name: jenkins     
+networks:
+  default:
+    external:
+      name: msworkshop_jbcnconf
