@@ -1,0 +1,12 @@
+spring.boot.admin.routes.endpoints: env,metrics,dump,jolokia,info,configprops,trace,refresh,loggers,logfile,hystrix.stream,activiti,turbine.stream
+ 
+spring.boot.admin.turbine:
+  clusters: default
+  location: admin-dashboard
+  
+turbine: 
+  appConfig: discovery, customers, movements    
+  clusterNameExpression: "'default'"
+  instanceUrlSuffix:
+    default: /private/hystrix.stream
+  

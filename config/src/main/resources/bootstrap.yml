@@ -1,0 +1,45 @@
+info:
+  component: Config Server
+spring:
+  application:
+    name: config-server    
+  cloud:
+    config:
+      failFast: true
+      server:
+        git:
+          uri: https://github.com/marcelogft/microservices-config.git
+    stream:
+      kafka:
+        binder:
+          brokers: kafka
+          zkNodes: kafka
+
+# Defines the port where the config server is running so that rest of the services can pick up 
+# their external configurations
+server:
+  port: 8888
+management:
+  context-path: /management
+  security:
+    role: ADMIN
+    enabled: true
+security:
+  user:
+    password: password
+  basic:
+    enabled: true
+repository:
+  git:
+    defaultLabel: master
+endpoints:
+  sensitive: true
+  info:
+    sensitive: false
+  health:
+    sensitive: false
+
+logging:
+  level:
+    root: INFO
+    com.netflix.discovery: 'OFF'    

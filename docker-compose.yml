@@ -1,0 +1,27 @@
+version: '2.1'
+services:
+  kafka:
+    image: spotify/kafka
+    container_name: kafka
+    environment:
+      - ADVERTISED_HOST=kafka
+      - ADVERTISED_PORT=9092
+    ports:
+      - 9092:9092
+      - 2181:2181 
+  
+  config:  
+    image: jbcnconf/config-server
+    restart: on-failure:10
+    container_name: config 
+    depends_on:
+      - kafka   
+    ports:
+      - 8888:8888   
+    expose:
+      - 8888    
+          
+networks:
+  default:
+    external:
+      name: msworkshop_jbcnconf

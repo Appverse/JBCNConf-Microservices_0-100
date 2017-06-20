@@ -1,0 +1,29 @@
+version: '2.1'
+services: 
+  customers:  
+    image: jbcnconf/customers-service
+    restart: on-failure:10 
+    depends_on: 
+      - customersdb   
+       
+  movementsdb:
+    image: mongo
+    restart: on-failure:10
+    container_name: movementsdb  
+                 
+  customersdb:   
+    image: mysql:8.0
+    container_name: customersdb 
+    environment:
+      - MYSQL_ROOT_PASSWORD=dbpass
+      - MYSQL_DATABASE=customers 
+              
+  movements:  
+    image: jbcnconf/movements-service
+    restart: on-failure:10 
+    depends_on:
+      - movementsdb                
+networks:
+  default:
+    external:
+      name: msworkshop_jbcnconf
